@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   def index
     @rooms = Room.all
+      @room = Room.new
   end
 
   def new
@@ -15,6 +16,10 @@ class RoomsController < ApplicationController
       render 'new'
     end
 
+  end
+
+  def show
+    redirect_to room_messages_path(:room_id => params[:id])
   end
 
   private
