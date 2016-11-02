@@ -5,6 +5,7 @@
   <%end%>
 
   <%= form_for [@room, Message.new] do |f| %>
+
     <%= f.label 'Username'  %>
     <%= f.text_field :username %>
     <%= f.label 'Content'  %>

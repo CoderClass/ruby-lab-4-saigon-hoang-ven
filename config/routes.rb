@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :rooms
-  
+  post 'login' => "home#login"
+  get 'logout' => "home#logout"
   resources :rooms do
     resources :messages
   end
