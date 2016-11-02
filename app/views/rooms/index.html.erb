@@ -1,0 +1,8 @@
+<h1>Welcome</h1>
+<p>All rooms here</p>
+<div class="container">
+  <% @rooms.each do |room| %>
+  <%= render 'room', room: room %>
+  <%end%>
+  <%= link_to "New room", new_room_path, class:"btn btn-primary" %>
+</div>
