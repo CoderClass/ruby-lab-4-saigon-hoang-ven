@@ -1,0 +1,4 @@
+$("#messages").empty()
+<%@messages.each do |message| %>
+$("#messages").append("<%= j render 'message', message: message %>")
+<%end %>

@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
       format.json {
         render json:@messages
       }
+      format.js
 
     end
   end
@@ -18,10 +19,19 @@ class MessagesController < ApplicationController
   def create
     room = Room.find(params[:room_id])
     message = Message.new message_params
+    message.username = username
     message.room = room
     if message.save
+      respond_to do |format|
+        format.html{
+          redirect_to messages_path
+        }
+        format.js{
+          render partial: 'create', locals: { message: message}
+        }
+      end
       #redirect_to room_messages_path(:room_id => room.id)
-      render partial: 'create', locals: { message: message}
+
     else
       redirect_to root_path
     end
@@ -30,6 +40,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:username, :content)
+    params.require(:message).permit(:content)
   end
 end

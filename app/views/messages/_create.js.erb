@@ -1,10 +1,1 @@
-window.updateMessagesViaJSON = function() {
-  console.log("inside updateMessagesViaJSON");
-  $.getJSON("localhost:3000/rooms/1/messages.json", function(messages) {
-    // this is the data you receive from http://localhost:3000/rooms/1/messages.json
-    // loop through the messages and render them
-    // you can use $(".messages").append("blah")
-    // to add blah to the <div class="messages">...</div> element
-    $(".messages").append("blahblahblahblahblah")
-  })
-}
+$("#messages").append("<%= j render 'message', message:message %>")
